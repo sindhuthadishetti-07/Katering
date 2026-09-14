@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KateringKing — Luxury Hyderabadi catering for weddings, corporate events, and private dining. Crafted for Taste. Engineered for Elegance." />
+  <title>KateringKing | Crafted for Taste. Engineered for Elegance.</title>
+
+  <!-- Google Fonts: Cormorant Garamond (luxury serif) + Inter (clean sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════ -->
+  <header class="site-nav" id="site-nav" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="#hero" class="nav-logo" aria-label="KateringKing home">
+        <span class="logo-main">KateringKing</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link nav-cta">Plan Your Event</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+      <button class="mobile-close" id="mobile-close" aria-label="Close menu">&#10005;</button>
+      <ul class="mobile-links" role="list">
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#menu" class="mobile-link">Menu</a></li>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#contact" class="mobile-link">Plan Your Event</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1 — HERO
+    ════════════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="Hero">
+
+      <!-- Video background -->
+      <div class="hero-video-wrap" aria-hidden="true">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1920&h=1080&fit=crop&q=85"
+        >
+          <!--
+            Replace src below with your actual video file.
+            Example: assets/video/biryani-hero.mp4
+            Free cinematic food footage available on Pexels / Pixabay:
+            https://www.pexels.com/search/videos/biryani/
+          -->
+          <source src="assets/video/hero.mp4" type="video/mp4" />
+          <!-- Fallback: poster image used automatically when video unavailable -->
+        </video>
+        <!-- Live Unsplash hero fallback image (shown when video is absent) -->
+        <img
+          class="hero-fallback-img"
+          src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1920&h=1080&fit=crop&q=85"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="hero-overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Hero content -->
+      <div class="hero-content reveal-hero">
+        <p class="hero-eyebrow">Hyderabadi Culinary Heritage</p>
+        <h1 class="hero-title">KateringKing</h1>
+        <p class="hero-tagline">Crafted for Taste.<br />Engineered for Elegance.</p>
+        <p class="hero-desc">
+          Exceptional catering rooted in the rich culinary heritage of Hyderabad,<br class="br-desktop" />
+          presented with the precision and sophistication of modern hospitality.
+        </p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+          <a href="#contact" class="btn btn-ghost">Plan Your Event</a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-line"></span>
+        <span class="scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2 — ABOUT / HOSPITALITY
+    ════════════════════════════════════════════ -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about-inner container">
+
+        <div class="about-image-col reveal-left">
+          <div class="about-img-frame">
+            <!--
+              Replace with a premium food/hospitality image.
+              Free sources: Unsplash (unsplash.com), Pexels (pexels.com)
+              Search: "Hyderabadi biryani plating" or "Indian fine dining"
+            -->
+            <img
+              src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&h=1000&fit=crop&q=85"
+              alt="Elegantly plated Hyderabadi cuisine served at a luxury event"
+              class="about-img"
+              loading="lazy"
+              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')"
+            />
+            <div class="about-img-accent" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="about-text-col reveal-right">
+          <span class="section-label">Our Philosophy</span>
+          <h2 class="section-title" id="about-heading">
+            Elevating the Art<br />of Hospitality
+          </h2>
+          <div class="about-divider" aria-hidden="true"></div>
+          <p class="about-body">
+            At KateringKing.com, we believe that exceptional catering goes beyond just great food — it requires precision, formal expertise, and an unwavering commitment to service. We don't just cook for your guests; we <em>engineer flawless dining experiences.</em>
+          </p>
+          <p class="about-body">
+            Backed by formal hotel management education and decades of industry experience, we bring a refined, structured approach to every wedding, corporate gala, and private event we undertake.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">20<span class="stat-plus">+</span></span>
+              <span class="stat-label">Years of Excellence</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-num">500<span class="stat-plus">+</span></span>
+              <span class="stat-label">Events Curated</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-num">100<span class="stat-plus">%</span></span>
+              <span class="stat-label">Authentic Recipes</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3 — MENU
+    ════════════════════════════════════════════ -->
+    <section class="menu" id="menu" aria-labelledby="menu-heading">
+      <div class="container">
+
+        <!-- Menu header -->
+        <div class="section-header reveal-up">
+          <span class="section-label light">The KateringKing Kitchen</span>
+          <h2 class="section-title light" id="menu-heading">The Culinary Masterclass</h2>
+          <p class="section-subtitle light">Engineered for Elegance. Crafted for Taste.</p>
+          <p class="menu-intro">
+            At KateringKing, we do not simply cook food; we curate gastronomic experiences. Our menus are a masterclass in flavor, blending the academic precision of modern hospitality with the rich, unyielding heritage of Indian culinary arts.
+          </p>
+        </div>
+
+        <!-- Menu tabs -->
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+          <button class="menu-tab active" role="tab" aria-selected="true" aria-controls="tab-signature" id="btn-signature" data-tab="signature">
+            The Signature Reserve
+          </button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="tab-heritage" id="btn-heritage" data-tab="heritage">
+            The Heritage Archive
+          </button>
+        </div>
+
+        <!-- ── TAB 1: Signature Reserve ── -->
+        <div class="menu-tab-panel active" id="tab-signature" role="tabpanel" aria-labelledby="btn-signature">
+          <div class="tab-intro reveal-up">
+            <p class="tab-desc">
+              Exclusive masterpieces crafted for the discerning palate. These are the crown jewels of the KateringKing kitchen, requiring hours of slow-cooking, precision marinades, and expert technique.
+            </p>
+          </div>
+
+          <div class="menu-grid">
+
+            <!-- Card: Royal Roasts -->
+            <article class="menu-card reveal-up" aria-label="The Royal Roasts and Cuts">
+              <div class="menu-card-img-wrap">
+                <img
+                  src="assets/pictrues/The-Cut-Roast.jpg"
+                  alt="Dum Ki Raan — slow-roasted whole leg of lamb"
+                  class="menu-card-img"
+                  loading="lazy"
+                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
+                />
+                <div class="menu-card-overlay" aria-hidden="true">
+                  <span class="menu-card-category">Slow-Cooked Masterpiece</span>
+                </div>
+              </div>
+              <div class="menu-card-body">
+                <h3 class="menu-card-title">The Royal Roasts &amp; Cuts</h3>
+                <ul class="dish-list" role="list">
+                  <li class="dish-item">
+                    <span class="dish-name">Dum Ki Raan</span>
+                    <span class="dish-desc">Whole leg of lamb slow-cooked in sealed vessel</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Kareli Roast</span>
+                    <span class="dish-desc">Lamb Shanks — tender, deeply marinated</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Musbi (Dum Ka Bakra)</span>
+                    <span class="dish-desc">Whole goat prepared in the royal dum tradition</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Card: Artisanal Bites -->
+            <article class="menu-card reveal-up" aria-label="Artisanal Bites">
+              <div class="menu-card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&h=600&fit=crop&q=85"
+                  alt="Muthi Ke Kebab — artisanal hand-pressed kebabs"
+                  class="menu-card-img"
+                  loading="lazy"
+                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
+                />
+                <div class="menu-card-overlay" aria-hidden="true">
+                  <span class="menu-card-category">Artisanal Craftsmanship</span>
+                </div>
+              </div>
+              <div class="menu-card-body">
+                <h3 class="menu-card-title">Artisanal Bites</h3>
+                <ul class="dish-list" role="list">
+                  <li class="dish-item">
+                    <span class="dish-name">Muthi Ke Kebab</span>
+                    <span class="dish-desc">Hand-pressed minced meat kebabs, charcoal finished</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Warqi Samosa</span>
+                    <span class="dish-desc">Flaky layered pastry with seasoned fillings</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Lukmi</span>
+                    <span class="dish-desc">Mutton &amp; Chicken — iconic Hyderabadi square pastry</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Card: Centerpieces -->
+            <article class="menu-card reveal-up" aria-label="The Centerpieces">
+              <div class="menu-card-img-wrap">
+                <img
+                  src="assets/pictrues/Murgh-Musallam.jpg"
+                  alt="Murgh Mussallam — whole chicken in royal Mughal preparation"
+                  class="menu-card-img"
+                  loading="lazy"
+                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
+                />
+                <div class="menu-card-overlay" aria-hidden="true">
+                  <span class="menu-card-category">Showstopper Dishes</span>
+                </div>
+              </div>
+              <div class="menu-card-body">
+                <h3 class="menu-card-title">The Centerpieces</h3>
+                <ul class="dish-list" role="list">
+                  <li class="dish-item">
+                    <span class="dish-name">Murgh Mussallam</span>
+                    <span class="dish-desc">Whole chicken in royal Mughal preparation</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Phattar Ka Gosht</span>
+                    <span class="dish-desc">Meat cooked on hot stone — ancient Deccan technique</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Dum Ke Chops</span>
+                    <span class="dish-desc">Succulent lamb chops sealed in aromatic dum</span>
+                  </li>
+                  <li class="dish-item">
+                    <span class="dish-name">Cold Fish Salads</span>
+                    <span class="dish-desc">Delicately spiced, elegantly composed</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+          </div><!-- /menu-grid -->
+        </div><!-- /tab-signature -->
+
+        <!-- ── TAB 2: Heritage Archive ── -->
+        <div class="menu-tab-panel" id="tab-heritage" role="tabpanel" aria-labelledby="btn-heritage" hidden>
+          <div class="tab-intro reveal-up">
+            <span class="heritage-subtitle">Authentic Hyderabadi</span>
+            <p class="tab-desc">
+              A deeply researched homage to the kitchens of the Nizams. We execute these centuries-old recipes with flawless consistency, ensuring the authentic taste of Hyderabad is presented with premium sophistication.
+            </p>
+          </div>
+
+          <!-- First Course -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">I</span>
+              <div>
+                <h3 class="course-title">The First Course</h3>
+                <p class="course-subtitle">Warming beginnings that set the tone</p>
+              </div>
+            </div>
+            <div class="course-dishes">
+              <div class="heritage-dish"><span class="hd-name">Mutton Marag</span><span class="hd-note">Delicate bone broth, slow-simmered</span></div>
+              <div class="heritage-dish"><span class="hd-name">Malai Paya</span><span class="hd-note">Creamy trotters in aromatic gravy</span></div>
+              <div class="heritage-dish"><span class="hd-name">Paya Shorba</span><span class="hd-note">Traditional trotter soup, richly spiced</span></div>
+              <div class="heritage-dish"><span class="hd-name">Haleem</span><span class="hd-note">Slow-cooked wheat &amp; meat — a Hyderabadi icon</span></div>
+              <div class="heritage-dish"><span class="hd-name">Shikampuri Kabab</span><span class="hd-note">Minced meat patties with curd center</span></div>
+              <div class="heritage-dish"><span class="hd-name">Shaami (Mutton/Chicken)</span><span class="hd-note">Silky dal-meat kebabs, pan finished</span></div>
+              <div class="heritage-dish"><span class="hd-name">Talawa Gosht</span><span class="hd-note">Crispy fried meat — bold and indulgent</span></div>
+            </div>
+          </div>
+
+          <!-- Main Course -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">II</span>
+              <div>
+                <h3 class="course-title">The Main Course</h3>
+                <p class="course-subtitle">The heart of the Hyderabadi table</p>
+              </div>
+            </div>
+            <div class="course-split">
+              <div class="course-column">
+                <h4 class="course-column-title">Non-Vegetarian Curries</h4>
+                <div class="heritage-dish"><span class="hd-name">Dum Ka Gosht</span><span class="hd-note">Tender mutton sealed in aromatic dum</span></div>
+                <div class="heritage-dish"><span class="hd-name">Lagani Gosht</span><span class="hd-note">Meat cooked over slow coal flame</span></div>
+                <div class="heritage-dish"><span class="hd-name">Mutton Asif Jahi</span><span class="hd-note">Named after the Nizams — regal preparation</span></div>
+                <div class="heritage-dish"><span class="hd-name">Dum Ka Murg</span><span class="hd-note">Whole chicken in sealed aromatic vessel</span></div>
+              </div>
+              <div class="course-column">
+                <h4 class="course-column-title">Vegetarian Classics</h4>
+                <div class="heritage-dish"><span class="hd-name">Mirchi Ka Salan</span><span class="hd-note">The quintessential biryani companion</span></div>
+                <div class="heritage-dish"><span class="hd-name">Bagara Baingan</span><span class="hd-note">Roasted aubergine in Nizami spice base</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dastarkhwan / Biryani -->
+          <div class="heritage-course biryani-course reveal-up">
+            <div class="biryani-bg" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=1600&h=900&fit=crop&q=85"
+                alt=""
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+              <div class="biryani-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="biryani-content">
+              <div class="course-header light">
+                <span class="course-number light">III</span>
+                <div>
+                  <h3 class="course-title light">The Dastarkhwan</h3>
+                  <p class="course-subtitle light">The Biryani Collection</p>
+                </div>
+              </div>
+              <p class="biryani-tagline">"The hallmark of any grand Hyderabadi feast."</p>
+              <div class="biryani-dishes">
+                <div class="biryani-dish">
+                  <span class="bd-name">Dum Ki Biryani</span>
+                  <span class="bd-variant">Chicken &amp; Mutton</span>
+                </div>
+                <div class="biryani-dish">
+                  <span class="bd-name">Kaccha Yakhni</span>
+                  <span class="bd-variant">Raw marinated meat biryani</span>
+                </div>
+                <div class="biryani-dish">
+                  <span class="bd-name">Sufyani Biryani</span>
+                  <span class="bd-variant">Delicate white biryani, mild and fragrant</span>
+                </div>
+                <div class="biryani-dish">
+                  <span class="bd-name">Zafrani Biryani</span>
+                  <span class="bd-variant">Saffron-kissed, the jewel of the feast</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desserts -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">IV</span>
+              <div>
+                <h3 class="course-title">The Final Act</h3>
+                <p class="course-subtitle">Traditional Desserts</p>
+              </div>
+            </div>
+            <div class="dessert-grid">
+              <div class="dessert-card">
+                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <span class="dessert-name">Double Ka Meetha</span>
+                <span class="dessert-desc">Hyderabadi bread pudding soaked in saffron milk</span>
+              </div>
+              <div class="dessert-card">
+                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <span class="dessert-name">Qubani Ka Meetha</span>
+                <span class="dessert-desc">Dried apricot compote served with cream</span>
+              </div>
+              <div class="dessert-card">
+                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <span class="dessert-name">Badam Ki Kheer</span>
+                <span class="dessert-desc">Slow-cooked almond milk pudding, cardamom scented</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /tab-heritage -->
+
+      </div><!-- /container -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 4 — SERVICES
+    ════════════════════════════════════════════ -->
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <div class="container">
+
+        <div class="section-header reveal-up">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title" id="services-heading">Curated Culinary Experiences</h2>
+          <div class="section-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Card 1: Weddings -->
+          <article class="service-card reveal-up" aria-label="Weddings and Social Galas">
+            <div class="service-img-wrap">
+              <img
+                src="assets/pictrues/social galas.png"
+                alt="Elegant wedding banquet table with Hyderabadi feast"
+                class="service-img"
+                loading="lazy"
+                onerror="this.closest('.service-img-wrap').classList.add('img-placeholder')"
+              />
+              <div class="service-img-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="service-body">
+              <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+              </div>
+              <h3 class="service-title">Weddings &amp; Social Galas</h3>
+              <p class="service-desc">
+                From intimate pre-wedding ceremonies to grand receptions, we design bespoke menus that reflect your vision, served with impeccable grace.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Enquire about wedding catering">Enquire Now <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <!-- Card 2: Corporate -->
+          <article class="service-card reveal-up" aria-label="Corporate Events and Exhibitions">
+            <div class="service-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1628294895950-9805252327bc?w=1200&h=675&fit=crop&q=85"
+                alt="Professional corporate catering setup for a gala event"
+                class="service-img"
+                loading="lazy"
+                onerror="this.closest('.service-img-wrap').classList.add('img-placeholder')"
+              />
+              <div class="service-img-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="service-body">
+              <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <h3 class="service-title">Corporate Events &amp; Exhibitions</h3>
+              <p class="service-desc">
+                Elevate your brand with our professional corporate catering. We provide seamless, sophisticated service for board meetings, product launches, and large-scale conventions.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Enquire about corporate catering">Enquire Now <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <!-- Card 3: Private Dining -->
+          <article class="service-card reveal-up" aria-label="Bespoke Private Dining">
+            <div class="service-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?w=1200&h=675&fit=crop&q=85"
+                alt="Intimate private dining table with fine Hyderabadi cuisine"
+                class="service-img"
+                loading="lazy"
+                onerror="this.closest('.service-img-wrap').classList.add('img-placeholder')"
+              />
+              <div class="service-img-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="service-body">
+              <div class="service-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                </svg>
+              </div>
+              <h3 class="service-title">Bespoke Private Dining</h3>
+              <p class="service-desc">
+                Exclusive, chef-curated menus brought directly to your chosen venue, offering a restaurant-quality fine dining experience for your most important guests.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Enquire about private dining">Enquire Now <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+        </div><!-- /services-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 5 — CLOSING CTA
+    ════════════════════════════════════════════ -->
+    <section class="closing-cta" id="contact" aria-label="Plan your event">
+
+      <div class="cta-media" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1920&h=1080&fit=crop&q=85"
+          alt=""
+          class="cta-bg-img"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+        <div class="cta-overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="cta-content reveal-up">
+        <span class="section-label light">Begin Your Journey</span>
+        <h2 class="cta-headline">
+          Your Occasion Deserves<br />More Than a Meal.
+        </h2>
+        <p class="cta-sub">It deserves an experience.</p>
+        <a href="mailto:hello@kateringking.com" class="btn btn-primary btn-large">Plan Your Event</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner container">
+
+      <div class="footer-brand">
+        <span class="footer-logo">KateringKing</span>
+        <p class="footer-tagline">Crafted for Taste. Engineered for Elegance.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about" class="footer-link">About</a>
+        <a href="#menu" class="footer-link">Menu</a>
+        <a href="#services" class="footer-link">Services</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </nav>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; <span id="footer-year"></span> KateringKing. All rights reserved.</p>
+        <p class="footer-heritage">Hyderabad &nbsp;·&nbsp; Crafting Culinary Excellence</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
