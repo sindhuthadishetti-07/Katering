@@ -21,7 +21,11 @@
   <header class="site-nav" id="site-nav" role="banner">
     <nav class="nav-inner" aria-label="Main navigation">
       <a href="#hero" class="nav-logo" aria-label="KateringKing home">
-        <span class="logo-main">KateringKing</span>
+        <!--<img
+          src="assets/pictrues/Logo.jpeg"
+          alt="KateringKing.com — Bespoke Catering Services"
+          class="nav-logo-img"
+        />-->
       </a>
 
       <!-- Desktop nav links -->
@@ -76,7 +80,7 @@
             Free cinematic food footage available on Pexels / Pixabay:
             https://www.pexels.com/search/videos/biryani/
           -->
-          <source src="assets/video/hero.mp4" type="video/mp4" />
+          <source src="assets/video/biryani.mp4" type="video/mp4"/>
           <!-- Fallback: poster image used automatically when video unavailable -->
         </video>
         <!-- Live Unsplash hero fallback image (shown when video is absent) -->
@@ -92,7 +96,7 @@
       <!-- Hero content -->
       <div class="hero-content reveal-hero">
         <p class="hero-eyebrow">Hyderabadi Culinary Heritage</p>
-        <h1 class="hero-title">KateringKing</h1>
+        <h1 class="hero-title">KateringKing.com</h1>
         <p class="hero-tagline">Crafted for Taste.<br />Engineered for Elegance.</p>
         <p class="hero-desc">
           Exceptional catering rooted in the rich culinary heritage of Hyderabad,<br class="br-desktop" />
@@ -197,117 +201,224 @@
         <!-- ── TAB 1: Signature Reserve ── -->
         <div class="menu-tab-panel active" id="tab-signature" role="tabpanel" aria-labelledby="btn-signature">
           <div class="tab-intro reveal-up">
+            <span class="heritage-subtitle">Crown Jewels of the KateringKing Kitchen</span>
             <p class="tab-desc">
               Exclusive masterpieces crafted for the discerning palate. These are the crown jewels of the KateringKing kitchen, requiring hours of slow-cooking, precision marinades, and expert technique.
             </p>
           </div>
 
-          <div class="menu-grid">
+          <!-- Course I — Royal Roasts & Cuts -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">I</span>
+              <div>
+                <h3 class="course-title">The Royal Roasts &amp; Cuts</h3>
+                <p class="course-subtitle">Slow-Cooked Masterpieces</p>
+              </div>
+            </div>
+            <div class="sig-dish-list">
 
-            <!-- Card: Royal Roasts -->
-            <article class="menu-card reveal-up" aria-label="The Royal Roasts and Cuts">
-              <div class="menu-card-img-wrap">
-                <img
-                  src="assets/pictrues/The-Cut-Roast.jpg"
-                  alt="Dum Ki Raan — slow-roasted whole leg of lamb"
-                  class="menu-card-img"
-                  loading="lazy"
-                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
-                />
-                <div class="menu-card-overlay" aria-hidden="true">
-                  <span class="menu-card-category">Slow-Cooked Masterpiece</span>
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=420&fit=crop&q=85"
+                    alt="Dum Ki Raan — slow-roasted whole leg of lamb"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Dum Ki Raan</h4>
+                  <p class="sig-dish-note">Whole leg of lamb slow-cooked for hours in a sealed vessel, marinated in a deep blend of spices — the centrepiece of any royal feast.</p>
                 </div>
               </div>
-              <div class="menu-card-body">
-                <h3 class="menu-card-title">The Royal Roasts &amp; Cuts</h3>
-                <ul class="dish-list" role="list">
-                  <li class="dish-item">
-                    <span class="dish-name">Dum Ki Raan</span>
-                    <span class="dish-desc">Whole leg of lamb slow-cooked in sealed vessel</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Kareli Roast</span>
-                    <span class="dish-desc">Lamb Shanks — tender, deeply marinated</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Musbi (Dum Ka Bakra)</span>
-                    <span class="dish-desc">Whole goat prepared in the royal dum tradition</span>
-                  </li>
-                </ul>
-              </div>
-            </article>
 
-            <!-- Card: Artisanal Bites -->
-            <article class="menu-card reveal-up" aria-label="Artisanal Bites">
-              <div class="menu-card-img-wrap">
-                <img
-                  src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&h=600&fit=crop&q=85"
-                  alt="Muthi Ke Kebab — artisanal hand-pressed kebabs"
-                  class="menu-card-img"
-                  loading="lazy"
-                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
-                />
-                <div class="menu-card-overlay" aria-hidden="true">
-                  <span class="menu-card-category">Artisanal Craftsmanship</span>
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&h=420&fit=crop&q=85"
+                    alt="Kareli Roast — slow-roasted lamb shanks"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Kareli Roast <span class="sig-dish-variant">(Lamb Shanks)</span></h4>
+                  <p class="sig-dish-note">Tender lamb shanks deeply marinated and slow-roasted until the meat falls from the bone — bold, aromatic, and unforgettable.</p>
                 </div>
               </div>
-              <div class="menu-card-body">
-                <h3 class="menu-card-title">Artisanal Bites</h3>
-                <ul class="dish-list" role="list">
-                  <li class="dish-item">
-                    <span class="dish-name">Muthi Ke Kebab</span>
-                    <span class="dish-desc">Hand-pressed minced meat kebabs, charcoal finished</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Warqi Samosa</span>
-                    <span class="dish-desc">Flaky layered pastry with seasoned fillings</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Lukmi</span>
-                    <span class="dish-desc">Mutton &amp; Chicken — iconic Hyderabadi square pastry</span>
-                  </li>
-                </ul>
-              </div>
-            </article>
 
-            <!-- Card: Centerpieces -->
-            <article class="menu-card reveal-up" aria-label="The Centerpieces">
-              <div class="menu-card-img-wrap">
-                <img
-                  src="assets/pictrues/Murgh-Musallam.jpg"
-                  alt="Murgh Mussallam — whole chicken in royal Mughal preparation"
-                  class="menu-card-img"
-                  loading="lazy"
-                  onerror="this.closest('.menu-card-img-wrap').classList.add('img-placeholder')"
-                />
-                <div class="menu-card-overlay" aria-hidden="true">
-                  <span class="menu-card-category">Showstopper Dishes</span>
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600&h=420&fit=crop&q=85"
+                    alt="Musbi — whole goat prepared in the royal dum tradition"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Musbi <span class="sig-dish-variant">(Dum Ka Bakra)</span></h4>
+                  <p class="sig-dish-note">A whole goat prepared in the royal dum tradition — sealed, slow-cooked, and presented whole as the ultimate statement of culinary grandeur.</p>
                 </div>
               </div>
-              <div class="menu-card-body">
-                <h3 class="menu-card-title">The Centerpieces</h3>
-                <ul class="dish-list" role="list">
-                  <li class="dish-item">
-                    <span class="dish-name">Murgh Mussallam</span>
-                    <span class="dish-desc">Whole chicken in royal Mughal preparation</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Phattar Ka Gosht</span>
-                    <span class="dish-desc">Meat cooked on hot stone — ancient Deccan technique</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Dum Ke Chops</span>
-                    <span class="dish-desc">Succulent lamb chops sealed in aromatic dum</span>
-                  </li>
-                  <li class="dish-item">
-                    <span class="dish-name">Cold Fish Salads</span>
-                    <span class="dish-desc">Delicately spiced, elegantly composed</span>
-                  </li>
-                </ul>
-              </div>
-            </article>
 
-          </div><!-- /menu-grid -->
+            </div>
+          </div>
+
+          <!-- Course II — Artisanal Bites -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">II</span>
+              <div>
+                <h3 class="course-title">Artisanal Bites</h3>
+                <p class="course-subtitle">Handcrafted with Precision</p>
+              </div>
+            </div>
+            <div class="sig-dish-list">
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=420&fit=crop&q=85"
+                    alt="Muthi Ke Kebab — hand-pressed minced meat kebabs"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Muthi Ke Kebab</h4>
+                  <p class="sig-dish-note">Hand-pressed minced meat kebabs finished over charcoal — each piece formed by hand, marinated overnight and grilled to perfection.</p>
+                </div>
+              </div>
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&h=420&fit=crop&q=85"
+                    alt="Warqi Samosa — flaky layered pastry"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Warqi Samosa</h4>
+                  <p class="sig-dish-note">A Hyderabadi classic — flaky, multi-layered pastry filled with seasoned meat, folded and fried until shatteringly crisp.</p>
+                </div>
+              </div>
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&h=420&fit=crop&q=85"
+                    alt="Lukmi — iconic Hyderabadi square pastry"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Lukmi <span class="sig-dish-variant">(Mutton &amp; Chicken)</span></h4>
+                  <p class="sig-dish-note">The iconic square Hyderabadi pastry — a delicate, unleavened dough pocket filled with spiced minced meat and deep-fried to golden perfection.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Course III — The Centerpieces -->
+          <div class="heritage-course reveal-up">
+            <div class="course-header">
+              <span class="course-number">III</span>
+              <div>
+                <h3 class="course-title">The Centerpieces</h3>
+                <p class="course-subtitle">Showstopper Dishes</p>
+              </div>
+            </div>
+            <div class="sig-dish-list">
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="assets/pictrues/Murgh-Musallam.jpg"
+                    alt="Murgh Mussallam — whole chicken in royal Mughal preparation"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Murgh Mussallam</h4>
+                  <p class="sig-dish-note">A whole chicken marinated in rich spices and slow-cooked in the royal Mughal tradition — visually spectacular, impossibly tender.</p>
+                </div>
+              </div>
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=420&fit=crop&q=85"
+                    alt="Phattar Ka Gosht — meat cooked on hot stone"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Phattar Ka Gosht</h4>
+                  <p class="sig-dish-note">An ancient Deccan technique — meat cooked directly on a scorching hot stone, sealing in all juices and creating a crust of extraordinary depth.</p>
+                </div>
+              </div>
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&h=420&fit=crop&q=85"
+                    alt="Dum Ke Chops — lamb chops in aromatic dum"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Dum Ke Chops</h4>
+                  <p class="sig-dish-note">Succulent lamb chops marinated and sealed in a tight dum vessel, slow-cooked until every fibre is infused with aromatic spice.</p>
+                </div>
+              </div>
+
+              <div class="sig-dish reveal-up">
+                <div class="sig-dish-img-wrap">
+                  <img
+                    src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=420&fit=crop&q=85"
+                    alt="Cold Fish Salads — delicately spiced and elegantly composed"
+                    class="sig-dish-img"
+                    loading="lazy"
+                    onerror="this.closest('.sig-dish-img-wrap').classList.add('img-placeholder')"
+                  />
+                  <div class="sig-dish-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sig-dish-body">
+                  <h4 class="sig-dish-name">Cold Fish Salads</h4>
+                  <p class="sig-dish-note">Delicately spiced and elegantly composed — a refined contrast on the table, balancing the richness of the main feast with precision and grace.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div><!-- /tab-signature -->
 
         <!-- ── TAB 2: Heritage Archive ── -->
@@ -329,13 +440,34 @@
               </div>
             </div>
             <div class="course-dishes">
-              <div class="heritage-dish"><span class="hd-name">Mutton Marag</span><span class="hd-note">Delicate bone broth, slow-simmered</span></div>
-              <div class="heritage-dish"><span class="hd-name">Malai Paya</span><span class="hd-note">Creamy trotters in aromatic gravy</span></div>
-              <div class="heritage-dish"><span class="hd-name">Paya Shorba</span><span class="hd-note">Traditional trotter soup, richly spiced</span></div>
-              <div class="heritage-dish"><span class="hd-name">Haleem</span><span class="hd-note">Slow-cooked wheat &amp; meat — a Hyderabadi icon</span></div>
-              <div class="heritage-dish"><span class="hd-name">Shikampuri Kabab</span><span class="hd-note">Minced meat patties with curd center</span></div>
-              <div class="heritage-dish"><span class="hd-name">Shaami (Mutton/Chicken)</span><span class="hd-note">Silky dal-meat kebabs, pan finished</span></div>
-              <div class="heritage-dish"><span class="hd-name">Talawa Gosht</span><span class="hd-note">Crispy fried meat — bold and indulgent</span></div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=120&h=90&fit=crop&q=80" alt="Mutton Marag" loading="lazy" />
+                <span class="hd-name">Mutton Marag</span><span class="hd-note">Delicate bone broth, slow-simmered</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="assets/pictrues/malai_paya.jpg" />
+                <span class="hd-name">Malai Paya</span><span class="hd-note">Creamy trotters in aromatic gravy</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="assets/pictrues/shorba.jpg" />
+                <span class="hd-name">Paya Shorba</span><span class="hd-note">Traditional trotter soup, richly spiced</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="https://images.unsplash.com/photo-1545247181-516773cae754?w=120&h=90&fit=crop&q=80" alt="Haleem" loading="lazy" />
+                <span class="hd-name">Haleem</span><span class="hd-note">Slow-cooked wheat &amp; meat — a Hyderabadi icon</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="assets/pictrues/hyderabadi-shikampuri-kebabs.jpg" alt="Shikampuri Kabab" loading="lazy" />
+                <span class="hd-name">Shikampuri Kabab</span><span class="hd-note">Minced meat patties with curd center</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=120&h=90&fit=crop&q=80" alt="Shaami Kabab" loading="lazy" />
+                <span class="hd-name">Shaami (Mutton/Chicken)</span><span class="hd-note">Silky dal-meat kebabs, pan finished</span>
+              </div>
+              <div class="heritage-dish">
+                <img class="hd-img" src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=120&h=90&fit=crop&q=80" alt="Talawa Gosht" loading="lazy" />
+                <span class="hd-name">Talawa Gosht</span><span class="hd-note">Crispy fried meat — bold and indulgent</span>
+              </div>
             </div>
           </div>
 
@@ -351,15 +483,33 @@
             <div class="course-split">
               <div class="course-column">
                 <h4 class="course-column-title">Non-Vegetarian Curries</h4>
-                <div class="heritage-dish"><span class="hd-name">Dum Ka Gosht</span><span class="hd-note">Tender mutton sealed in aromatic dum</span></div>
-                <div class="heritage-dish"><span class="hd-name">Lagani Gosht</span><span class="hd-note">Meat cooked over slow coal flame</span></div>
-                <div class="heritage-dish"><span class="hd-name">Mutton Asif Jahi</span><span class="hd-note">Named after the Nizams — regal preparation</span></div>
-                <div class="heritage-dish"><span class="hd-name">Dum Ka Murg</span><span class="hd-note">Whole chicken in sealed aromatic vessel</span></div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/dumka ghosht.jpg" alt="Dum Ka Gosht" loading="lazy" />
+                  <span class="hd-name">Dum Ka Gosht</span><span class="hd-note">Tender mutton sealed in aromatic dum</span>
+                </div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/lagani ghosht.webp" alt="Lagani Gosht" loading="lazy" />
+                  <span class="hd-name">Lagani Gosht</span><span class="hd-note">Meat cooked over slow coal flame</span>
+                </div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/asif jahi.webp" alt="Mutton Asif Jahi" loading="lazy" />
+                  <span class="hd-name">Mutton Asif Jahi</span><span class="hd-note">Named after the Nizams — regal preparation</span>
+                </div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/dum ka murg.jpg" alt="Dum Ka Murg" loading="lazy" />
+                  <span class="hd-name">Dum Ka Murg</span><span class="hd-note">Whole chicken in sealed aromatic vessel</span>
+                </div>
               </div>
               <div class="course-column">
                 <h4 class="course-column-title">Vegetarian Classics</h4>
-                <div class="heritage-dish"><span class="hd-name">Mirchi Ka Salan</span><span class="hd-note">The quintessential biryani companion</span></div>
-                <div class="heritage-dish"><span class="hd-name">Bagara Baingan</span><span class="hd-note">Roasted aubergine in Nizami spice base</span></div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/mirchi_ka_salan.avif" alt="Mirchi Ka Salan" loading="lazy" />
+                  <span class="hd-name">Mirchi Ka Salan</span><span class="hd-note">The quintessential biryani companion</span>
+                </div>
+                <div class="heritage-dish">
+                  <img class="hd-img" src="assets/pictrues/baingan.jpg" alt="Bagara Baingan" loading="lazy" />
+                  <span class="hd-name">Bagara Baingan</span><span class="hd-note">Roasted aubergine in Nizami spice base</span>
+                </div>
               </div>
             </div>
           </div>
@@ -416,17 +566,41 @@
             </div>
             <div class="dessert-grid">
               <div class="dessert-card">
-                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <div class="dessert-img-wrap">
+                  <img
+                    src="assets/pictrues/Double-Ka-Meetha.jpg"
+                    alt="Double Ka Meetha — Hyderabadi bread pudding"
+                    class="dessert-img"
+                    loading="lazy"
+                    onerror="this.closest('.dessert-img-wrap').style.display='none'"
+                  />
+                </div>
                 <span class="dessert-name">Double Ka Meetha</span>
                 <span class="dessert-desc">Hyderabadi bread pudding soaked in saffron milk</span>
               </div>
               <div class="dessert-card">
-                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <div class="dessert-img-wrap">
+                  <img
+                    src="assets/pictrues/qubani-ka-meetha.jpg"
+                    alt="Qubani Ka Meetha — dried apricot compote"
+                    class="dessert-img"
+                    loading="lazy"
+                    onerror="this.closest('.dessert-img-wrap').style.display='none'"
+                  />
+                </div>
                 <span class="dessert-name">Qubani Ka Meetha</span>
                 <span class="dessert-desc">Dried apricot compote served with cream</span>
               </div>
               <div class="dessert-card">
-                <div class="dessert-icon" aria-hidden="true">◈</div>
+                <div class="dessert-img-wrap">
+                  <img
+                    src="assets/pictrues/Badam-Kheer.jpg"
+                    alt="Badam Ki Kheer — slow-cooked almond milk pudding"
+                    class="dessert-img"
+                    loading="lazy"
+                    onerror="this.closest('.dessert-img-wrap').style.display='none'"
+                  />
+                </div>
                 <span class="dessert-name">Badam Ki Kheer</span>
                 <span class="dessert-desc">Slow-cooked almond milk pudding, cardamom scented</span>
               </div>
@@ -556,10 +730,23 @@
           Your Occasion Deserves<br />More Than a Meal.
         </h2>
         <p class="cta-sub">It deserves an experience.</p>
-        <a href="mailto:hello@kateringking.com" class="btn btn-primary btn-large">Plan Your Event</a>
+        <a href="tel:+917777998789" class="btn btn-primary btn-large">Plan Your Event</a>
       </div>
 
     </section>
+
+    <!-- Floating phone button -->
+    <a
+      href="tel:+917777998789"
+      class="float-phone"
+      aria-label="Call us: 7777998789"
+      title="Call KateringKing"
+    >
+      <svg class="float-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span class="float-phone-num">7777998789</span>
+    </a>
 
   </main>
 
@@ -570,7 +757,13 @@
     <div class="footer-inner container">
 
       <div class="footer-brand">
-        <span class="footer-logo">KateringKing</span>
+        <a href="#hero" aria-label="KateringKing home">
+          <img
+            src="assets/pictrues/Logo.jpeg"
+            alt="KateringKing.com — Bespoke Catering Services"
+            class="footer-logo-img"
+          />
+        </a>
         <p class="footer-tagline">Crafted for Taste. Engineered for Elegance.</p>
       </div>
 
@@ -580,6 +773,31 @@
         <a href="#services" class="footer-link">Services</a>
         <a href="#contact" class="footer-link">Contact</a>
       </nav>
+
+      <div class="footer-icons">
+        <a
+          href="https://www.instagram.com/kateringkingservices?igsi=MThtM3E2Y3BhdnNqag=="
+          class="footer-icon-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="KateringKing on Instagram"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a
+          href="tel:+917777998789"
+          class="footer-icon-link"
+          aria-label="Call 7777998789"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </a>
+      </div>
 
       <div class="footer-bottom">
         <p class="footer-copy">&copy; <span id="footer-year"></span> KateringKing. All rights reserved.</p>
