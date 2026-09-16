@@ -986,8 +986,8 @@ button {
 
 .sig-dish {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  min-height: 220px;
+  grid-template-columns: 380px 1fr;
+  min-height: 280px;
   background: var(--navy-mid);
   overflow: hidden;
   transition: transform var(--dur-med) var(--ease-out);
@@ -996,7 +996,7 @@ button {
 
 /* Alternate image side every other dish for visual rhythm */
 .sig-dish:nth-child(even) {
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 380px;
   direction: rtl;
 }
 .sig-dish:nth-child(even) .sig-dish-body {
@@ -1143,7 +1143,7 @@ button {
 /* Small dish thumbnail — sits above name/note, same column layout */
 .hd-img {
   width: 100%;
-  height: 90px;
+  height: 120px;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -1155,16 +1155,17 @@ button {
 
 .hd-name {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--cream);
   font-weight: 500;
 }
 
 .hd-note {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   line-height: 1.5;
 }
+
 
 /* Split layout for main course */
 .course-split {
@@ -1175,7 +1176,24 @@ button {
 
 /* Larger images in main course columns only */
 .course-split .hd-img {
-  height: 200px;
+  height: 220px;
+}
+
+/* ── First Course only — more prominent image and text size ── */
+#tab-heritage .heritage-course:first-of-type .course-dishes {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+#tab-heritage .heritage-course:first-of-type .heritage-dish {
+  gap: 0.4rem;
+}
+#tab-heritage .heritage-course:first-of-type .hd-img {
+  height: 150px;
+}
+#tab-heritage .heritage-course:first-of-type .hd-name {
+  font-size: 1.25rem;
+}
+#tab-heritage .heritage-course:first-of-type .hd-note {
+  font-size: 0.88rem;
 }
 
 .course-column-title {
@@ -1302,7 +1320,7 @@ button {
 }
 .dessert-img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -1673,10 +1691,10 @@ button {
 
   /* Signature dish — narrower image at tablet */
   .sig-dish {
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 300px 1fr;
   }
   .sig-dish:nth-child(even) {
-    grid-template-columns: 1fr 260px;
+    grid-template-columns: 1fr 300px;
   }
 
   .course-split {
@@ -1684,7 +1702,10 @@ button {
     gap: 2rem;
   }
   .course-split .hd-img {
-    height: 160px;
+    height: 180px;
+  }
+  #tab-heritage .heritage-course:first-of-type .hd-img {
+    height: 120px;
   }
 
   .services-grid {
@@ -1775,7 +1796,7 @@ button {
     direction: ltr;
   }
   .sig-dish-img-wrap {
-    height: 220px;
+    height: 260px;
   }
   .sig-dish-img-overlay,
   .sig-dish:nth-child(even) .sig-dish-img-overlay {
@@ -1806,7 +1827,7 @@ button {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  .dessert-img { height: 220px; }
+  .dessert-img { height: 250px; }
 
   /* Services */
   .services-grid {
