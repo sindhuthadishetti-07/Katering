@@ -107,7 +107,10 @@ button {
   color: var(--gold);
   margin-bottom: 1rem;
 }
-.section-label.light { color: var(--gold-light); }
+.section-label.light { 
+  color: var(--gold-light);
+  text-transform: none;
+ }
 
 .section-title {
   font-family: var(--font-serif);
@@ -483,13 +486,13 @@ button {
 /* Hero content */
 .hero-content {
   position: relative;
-  z-index: 3; /* above overlay (z:2), video (z:1), fallback img (z:0) */
+  z-index: 3;
   text-align: center;
   padding: 0 var(--container-px);
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
-  /* Never let the container clip the title */
   overflow: visible;
+  box-sizing: border-box;
 }
 
 .hero-eyebrow {
@@ -506,23 +509,53 @@ button {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 8.5vw, 8rem);
+  font-size: clamp(3rem, 7vw, 7rem);
   font-weight: 600;
-  letter-spacing: 0.15em;
-  padding-right: 0.15em;
-  /* Metallic gold gradient to echo the logo's 3D gold lettering */
+
+  /* Reduced spacing so the complete name fits */
+  letter-spacing: 0.04em;
+
+  /* Keep the complete name on one line */
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+
+  /* Make sure the title itself is not clipped */
+  overflow: visible;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
   background: var(--gold-metallic);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* Fallback for browsers that don't support text-fill */
   color: var(--gold-light);
+
   line-height: 1.1;
-  text-transform: uppercase;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  text-transform: none;
+
   opacity: 0;
   animation: fadeUp 1s var(--ease-out) 0.55s forwards;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 8vw;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 8.5vw;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 .hero-tagline {
