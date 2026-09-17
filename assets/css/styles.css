@@ -1620,8 +1620,10 @@ button {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   FLOATING PHONE BUTTON
+   FLOATING BUTTONS — WhatsApp + Phone (stacked, bottom-right)
 ═══════════════════════════════════════════════════════════════ */
+
+/* Phone button — sits at bottom */
 .float-phone {
   position: fixed;
   bottom: 2rem;
@@ -1667,6 +1669,59 @@ button {
   50%       { box-shadow: 0 4px 28px rgba(201,168,76,0.65), 0 2px 8px rgba(0,0,0,0.3); }
 }
 
+/* WhatsApp floating button — green, identical shape to phone button */
+.float-whatsapp {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 2rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #25D366;
+  color: #fff;
+  padding: 0.75rem 1.3rem 0.75rem 0.9rem;
+  border-radius: 60px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 2px 8px rgba(0,0,0,0.3);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: background var(--dur-fast), box-shadow var(--dur-fast), transform var(--dur-fast);
+  animation: whatsappPulse 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+.float-whatsapp:hover,
+.float-whatsapp:focus-visible {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.55), 0 4px 12px rgba(0,0,0,0.35);
+  animation: none;
+  outline: none;
+}
+
+.float-whatsapp-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.float-whatsapp-num {
+  white-space: nowrap;
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4), 0 2px 8px rgba(0,0,0,0.3); }
+  50%       { box-shadow: 0 4px 28px rgba(37,211,102,0.65), 0 2px 8px rgba(0,0,0,0.3); }
+}
+
+/* Footer WhatsApp icon — green on hover */
+.footer-icon-link--whatsapp:hover {
+  color: #25D366;
+  border-color: #25D366;
+}
+
 @media (max-width: 400px) {
   .float-phone {
     padding: 0.85rem;
@@ -1675,6 +1730,14 @@ button {
     right: 1.5rem;
   }
   .float-phone-num { display: none; }
+
+  .float-whatsapp {
+    padding: 0.85rem;
+    border-radius: 50%;
+    bottom: 5rem;
+    right: 1.5rem;
+  }
+  .float-whatsapp-num { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
