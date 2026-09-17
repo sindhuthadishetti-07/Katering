@@ -191,11 +191,25 @@ button {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform var(--dur-med) var(--ease-luxury);
 }
 .btn:hover::before { transform: scaleX(1); transform-origin: left; }
+
+/* Ensure button text always sits above the sliding ::before layer */
+.btn-primary,
+.btn-ghost {
+  isolation: isolate;
+}
+.btn-primary > *,
+.btn-ghost > *,
+.btn-primary,
+.btn-ghost {
+  position: relative;
+  z-index: 1;
+}
 
 .btn-primary {
   background: var(--gold);
@@ -348,6 +362,8 @@ button {
   gap: 5px;
   padding: 6px;
   z-index: 1200;
+  opacity: 1;
+  transition: opacity var(--dur-fast);
 }
 .hamburger-line {
   display: block;
@@ -357,9 +373,11 @@ button {
   transition: transform var(--dur-med) var(--ease-luxury),
               opacity var(--dur-fast);
 }
-.nav-toggle.open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-toggle.open .hamburger-line:nth-child(2) { opacity: 0; }
-.nav-toggle.open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Hide the hamburger entirely when menu is open — close button inside overlay takes over */
+.nav-toggle.open {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Mobile menu overlay */
 .mobile-menu {
@@ -509,28 +527,28 @@ button {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 7rem);
+  /* 6.2vw keeps "KateringKing.com" (14 chars) on one line at any viewport width.
+     clamp floor 1.6rem ensures readability, cap 7rem for large screens. */
+  font-size: clamp(1.6rem, 6.2vw, 7rem);
   font-weight: 600;
 
-  /* Reduced spacing so the complete name fits */
   letter-spacing: 0.04em;
 
-  /* Keep the complete name on one line */
+  /* Always single line */
   white-space: nowrap;
   word-break: normal;
   overflow-wrap: normal;
-
-  /* Make sure the title itself is not clipped */
   overflow: visible;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 
-  background: var(--gold-metallic);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: var(--gold-light);
+  /* Warm dark amber-brown — rich, premium, legible over dark hero */
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  color: var(--ivory);
 
   line-height: 1.1;
   text-transform: none;
@@ -542,7 +560,7 @@ button {
 /* Tablet */
 @media (max-width: 900px) {
   .hero-title {
-    font-size: 8vw;
+    font-size: 6.2vw;
     letter-spacing: 0.03em;
   }
 }
@@ -550,7 +568,8 @@ button {
 /* Mobile */
 @media (max-width: 600px) {
   .hero-title {
-    font-size: 8.5vw;
+    /* 6.2vw on 360px ≈ 22px × 14 chars ≈ 315px — fits within viewport */
+    font-size: 6.2vw;
     letter-spacing: 0.01em;
     white-space: nowrap;
     width: 100%;
@@ -1788,12 +1807,12 @@ button {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
 
-  /* Hero — scale title down so "G" is never clipped at any mobile width */
+  /* Hero — scale title to always fit on one line on mobile */
   .hero-title {
-    font-size: clamp(2rem, 10.5vw, 4.5rem);
-    letter-spacing: 0.08em;
-    padding-right: 0.08em;
-    font-weight: 500;
+    font-size: 6.2vw;
+    letter-spacing: 0.03em;
+    padding-right: 0;
+    font-weight: 600;
   }
 
   /* Hero */
@@ -1907,10 +1926,10 @@ button {
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(1.8rem, 11vw, 3rem);
-    letter-spacing: 0.06em;
-    padding-right: 0.06em;
-    font-weight: 500;
+    font-size: 6.2vw;
+    letter-spacing: 0.02em;
+    padding-right: 0;
+    font-weight: 600;
   }
   .biryani-dishes {
     grid-template-columns: 1fr;

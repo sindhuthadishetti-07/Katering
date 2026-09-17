@@ -57,11 +57,13 @@
 
   function openMenu() {
     mobileMenu.classList.add('open');
-    mobileMenu.removeAttribute('hidden');
     mobileMenu.setAttribute('aria-hidden', 'false');
     toggle.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
+    // Move focus to close button for accessibility
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeMenu() {
@@ -69,6 +71,7 @@
     mobileMenu.setAttribute('aria-hidden', 'true');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
   }
 
@@ -79,9 +82,11 @@
 
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  // Close on link click
+  // Close on any mobile nav link click — also re-enables scroll immediately
   mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
   });
 
   // Close on Escape key
@@ -89,6 +94,13 @@
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
       closeMenu();
       toggle.focus();
+    }
+  });
+
+  // Safety net: if user resizes to desktop while menu is open, close it
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && mobileMenu.classList.contains('open')) {
+      closeMenu();
     }
   });
 })();
