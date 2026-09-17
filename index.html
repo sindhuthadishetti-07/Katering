@@ -44,17 +44,19 @@
       </button>
     </nav>
 
-    <!-- Mobile menu overlay -->
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
-      <button class="mobile-close" id="mobile-close" aria-label="Close menu">&#10005;</button>
-      <ul class="mobile-links" role="list">
-        <li><a href="#about" class="mobile-link">About</a></li>
-        <li><a href="#menu" class="mobile-link">Menu</a></li>
-        <li><a href="#services" class="mobile-link">Services</a></li>
-        <li><a href="#contact" class="mobile-link">Plan Your Event</a></li>
-      </ul>
-    </div>
+    <!-- Mobile menu overlay — must be direct child of body to escape
+         the header's stacking context (position:fixed z-index:1000) -->
   </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&#10005;</button>
+    <ul class="mobile-links" role="list">
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#menu" class="mobile-link">Menu</a></li>
+      <li><a href="#services" class="mobile-link">Services</a></li>
+      <li><a href="#contact" class="mobile-link">Plan Your Event</a></li>
+    </ul>
+  </div>
 
   <main>
 
