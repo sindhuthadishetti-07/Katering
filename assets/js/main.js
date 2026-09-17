@@ -82,10 +82,32 @@
 
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  // Close on any mobile nav link click — also re-enables scroll immediately
+  // Close on any mobile nav link click, then scroll to target after overflow is cleared
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault(); // stop the default anchor jump
+        closeMenu();        // clears body overflow immediately
+
+        // Defer scroll by two rAF ticks so the browser has time to
+        // remove overflow:hidden and recalculate element positions
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const target = document.querySelector(href);
+            if (!target) return;
+            const nav = document.getElementById('site-nav');
+            const navH = nav ? nav.offsetHeight : 80;
+            const top = target.getBoundingClientRect().top
+                      + window.scrollY
+                      - navH
+                      - 16;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          });
+        });
+      } else {
+        closeMenu();
+      }
     });
   });
 
