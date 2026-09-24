@@ -840,6 +840,11 @@ button {
   gap: 0;
   margin-bottom: 3.5rem;
   border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  /* Sticky — floats below the fixed nav while user is inside the menu section */
+  position: sticky;
+  top: 64px;      /* clears the fixed nav bar */
+  z-index: 50;    /* above menu content, below site nav (z:1000) */
+  background: var(--navy);
 }
 
 .menu-tab {
@@ -2028,6 +2033,8 @@ button {
     border-bottom: none;
     gap: 0.5rem;
     align-items: center;
+    top: 56px; /* slightly shorter nav on mobile */
+    padding: 0.75rem 0;
   }
   .menu-tab {
     border: 1px solid rgba(201, 150, 58, 0.25);
