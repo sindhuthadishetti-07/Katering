@@ -1008,9 +1008,39 @@ button {
   gap: 1.5px;
 }
 
+/* Single dish — full width, larger image column */
+.sig-dish-list--single .sig-dish {
+  grid-template-columns: 520px 1fr;
+  min-height: 340px;
+}
+.sig-dish-list--single .sig-dish:nth-child(even) {
+  grid-template-columns: 520px 1fr;
+  direction: ltr;
+}
+.sig-dish-list--single .sig-dish-body,
+.sig-dish-list--single .sig-dish:nth-child(even) .sig-dish-body {
+  direction: ltr;
+}
+
+@media (max-width: 1024px) {
+  .sig-dish-list--single .sig-dish,
+  .sig-dish-list--single .sig-dish:nth-child(even) {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sig-dish-list--single .sig-dish,
+  .sig-dish-list--single .sig-dish:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  .sig-dish-list--single .sig-dish-img-wrap {
+    height: 280px;
+  }
+}
+
 /* Two-column side-by-side layout for Royal Roasts (2 dishes) */
-.sig-dish-list--two-col {
-  display: grid;
+.sig-dish-list--two-col {  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5px;
 }
@@ -1872,14 +1902,98 @@ button {
   transform: translateY(-2px);
 }
 
+/* ── Floating Aura venue partner badge — bottom-right, below phone ── */
+.float-aura {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  top: auto;
+  left: auto;
+  z-index: 900;
+  animation: phonePulse 4s ease-in-out infinite;
+  animation-delay: 2.5s;
+  text-decoration: none;
+}
+
+.float-aura-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #F5EFE0;
+  border: 1px solid rgba(201, 168, 76, 0.6);
+  border-radius: 60px;
+  padding: 0.45rem 1.1rem 0.45rem 0.45rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 0 0 1px rgba(201,168,76,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast), transform var(--dur-fast);
+}
+.float-aura:hover .float-aura-inner {
+  background: #FAF7F0;
+  border-color: rgba(201,168,76,0.9);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.22), 0 0 0 1px rgba(201,168,76,0.3);
+  transform: translateY(-2px);
+  animation: none;
+}
+
+.float-aura-logo {
+  width: 38px;
+  height: 38px;
+  /* cover + top-center crops to the shield emblem, making it
+     clearly visible at 38px without changing the icon size */
+  object-fit: cover;
+  object-position: center 10%;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #0D1B2A;
+}
+
+.float-aura-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.float-aura-label {
+  font-family: var(--font-sans);
+  font-size: 0.52rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.float-aura-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+@media (max-width: 400px) {
+  .float-aura {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    top: auto;
+    left: auto;
+  }
+  .float-aura-name { font-size: 0.85rem; }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    FLOATING BUTTONS — WhatsApp + Phone (stacked, bottom-right)
 ═══════════════════════════════════════════════════════════════ */
 
-/* Phone button — sits at bottom */
+/* Phone button — sits above Aura badge */
 .float-phone {
   position: fixed;
-  bottom: 2rem;
+  bottom: 5.5rem;
   right: 2rem;
   z-index: 900;
   display: flex;
@@ -1922,10 +2036,10 @@ button {
   50%       { box-shadow: 0 4px 28px rgba(201,168,76,0.65), 0 2px 8px rgba(0,0,0,0.3); }
 }
 
-/* WhatsApp floating button — green, identical shape to phone button */
+/* WhatsApp floating button — green, sits above phone */
 .float-whatsapp {
   position: fixed;
-  bottom: 5.5rem;
+  bottom: 9rem;
   right: 2rem;
   z-index: 900;
   display: flex;
@@ -1979,7 +2093,7 @@ button {
   .float-phone {
     padding: 0.85rem;
     border-radius: 50%;
-    bottom: 1.5rem;
+    bottom: 5rem;
     right: 1.5rem;
   }
   .float-phone-num { display: none; }
@@ -1987,7 +2101,7 @@ button {
   .float-whatsapp {
     padding: 0.85rem;
     border-radius: 50%;
-    bottom: 5rem;
+    bottom: 8.5rem;
     right: 1.5rem;
   }
   .float-whatsapp-num { display: none; }
