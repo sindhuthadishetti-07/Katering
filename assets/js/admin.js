@@ -449,6 +449,19 @@ $$('[data-search]').forEach(input => {
   });
 });
 
+// ── Toolbar buttons — event delegation on kk-main ────────────
+// Handles: + Add Dish (toolbar), + Add Category (toolbar)
+// Uses delegation so it works regardless of when panes render.
+$('kk-main').addEventListener('click', e => {
+  // + Add Dish button in toolbar
+  const addDishBtn = e.target.closest('[data-add-dish]');
+  if (addDishBtn && !addDishBtn.dataset.defaultCat) {
+    const tabId = addDishBtn.dataset.addDish;
+    openDishModal(null, tabId);
+    return;
+  }
+});
+
 // Add category buttons in toolbar
 $$('[data-add-cat]').forEach(btn => {
   btn.addEventListener('click', async () => {
