@@ -1,0 +1,13 @@
+{
+  "name": "kateringking-scripts",
+  "version": "1.0.0",
+  "description": "One-time setup scripts for KateringKing Firebase CMS",
+  "private": true,
+  "scripts": {
+    "seed":       "node seed.js",
+    "set-admin":  "node set-admin-claim.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}

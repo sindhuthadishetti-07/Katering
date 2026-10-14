@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KateringKing — Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body class="kk-admin" style="background:#0D1B2A;min-height:100vh;display:flex;align-items:center;justify-content:center;">
+
+<!-- ═══════════════════════════════════════════════════════════
+     OVERLAY WRAPPER  (login + dashboard both live inside here)
+════════════════════════════════════════════════════════════ -->
+<div id="kk-admin-overlay" class="kk-admin open">
+
+  <!-- ── LOGIN CARD ─────────────────────────────────────── -->
+  <div id="kk-login-card" class="kk-login-card">
+    <div class="kk-login-logo">
+      <div class="kk-login-logo-mark">K</div>
+      <div class="kk-login-brand">
+        KateringKing
+        <span>Admin Portal</span>
+      </div>
+    </div>
+
+    <h1 class="kk-login-title">Sign In</h1>
+    <p class="kk-login-sub">Access is restricted to authorised administrators.</p>
+
+    <div id="kk-login-error" class="kk-error"></div>
+
+    <form id="kk-login-form" novalidate>
+      <div class="kk-form-group">
+        <label class="kk-label" for="kk-username">Username</label>
+        <input id="kk-username" class="kk-input" type="text"
+               placeholder="Enter your username" autocomplete="username"
+               spellcheck="false" required />
+      </div>
+      <div class="kk-form-group">
+        <label class="kk-label" for="kk-password">Password</label>
+        <input id="kk-password" class="kk-input" type="password"
+               placeholder="••••••••" autocomplete="current-password" required />
+      </div>
+      <button type="submit" class="kk-btn kk-btn-primary kk-btn-full" id="kk-login-btn">
+        Sign In
+      </button>
+    </form>
+
+    <button class="kk-forgot-link" id="kk-show-reset">Forgot password?</button>
+
+    <!-- Reset password form (hidden by default) -->
+    <div id="kk-reset-wrap" style="display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+      <div id="kk-reset-success" class="kk-success-msg"></div>
+      <div id="kk-reset-error"   class="kk-error"></div>
+      <div class="kk-form-group">
+        <label class="kk-label" for="kk-reset-email">Your email address (for reset link)</label>
+        <input id="kk-reset-email" class="kk-input" type="email"
+               placeholder="admin@kateringking.com" />
+      </div>
+      <button id="kk-send-reset" class="kk-btn kk-btn-ghost kk-btn-full">
+        Send Reset Email
+      </button>
+    </div>
+  </div><!-- /login card -->
+
+
+  <!-- ── DASHBOARD ──────────────────────────────────────── -->
+  <div id="kk-dashboard" class="kk-admin">
+
+    <!-- Top bar -->
+    <div class="kk-topbar">
+      <div class="kk-topbar-brand">
+        KateringKing <span>CMS</span>
+      </div>
+      <div class="kk-topbar-actions">
+        <span class="kk-admin-email" id="kk-user-email"></span>
+        <a href="index.html" target="_blank" class="kk-btn kk-btn-ghost kk-btn-sm">
+          View Site ↗
+        </a>
+        <button id="kk-logout-btn" class="kk-btn kk-btn-ghost kk-btn-sm">Logout</button>
+      </div>
+    </div>
+
+    <!-- Mobile tab strip (shown only on small screens) -->
+    <div class="kk-mobile-tabs" id="kk-mobile-tabs" role="tablist"></div>
+
+    <!-- Body -->
+    <div class="kk-body">
+
+      <!-- Sidebar -->
+      <nav class="kk-sidebar" aria-label="Admin navigation">
+        <button class="kk-nav-item active" data-pane="pane-overview">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Overview
+        </button>
+        <button class="kk-nav-item" data-pane="pane-nonveg">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Non-Veg Menu
+        </button>
+        <button class="kk-nav-item" data-pane="pane-veg">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12"/><path d="M5 12a7 7 0 0 0 7 7 7 7 0 0 0 7-7 7 7 0 0 0-7-7 7 7 0 0 0-7 7"/></svg>
+          Veg Menu
+        </button>
+        <button class="kk-nav-item" data-pane="pane-signature">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Signature Reserve
+        </button>
+        <button class="kk-nav-item" data-pane="pane-content">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Site Content
+        </button>
+        <button class="kk-nav-item" data-pane="pane-backup">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 15 21 21 3 21 3 15"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Backup & Restore
+        </button>
+        <button class="kk-nav-item" data-pane="pane-settings">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </button>
+
+        <div class="kk-sidebar-footer">
+          <button id="kk-sidebar-logout" class="kk-btn kk-btn-ghost kk-btn-sm kk-btn-full">
+            Logout
+          </button>
+        </div>
+      </nav><!-- /sidebar -->
+
+      <!-- Main panes -->
+      <main class="kk-main" id="kk-main">
+
+        <!-- ── OVERVIEW ──────────────────────────────── -->
+        <div id="pane-overview" class="kk-pane active">
+          <h2 class="kk-pane-title">Overview</h2>
+          <p class="kk-pane-sub">KateringKing menu management dashboard.</p>
+
+          <div class="kk-stat-grid" id="kk-stats-grid">
+            <div class="kk-stat-card">
+              <div class="kk-stat-num" id="stat-total-items">—</div>
+              <div class="kk-stat-label">Total Dishes</div>
+            </div>
+            <div class="kk-stat-card">
+              <div class="kk-stat-num" id="stat-published">—</div>
+              <div class="kk-stat-label">Published</div>
+            </div>
+            <div class="kk-stat-card">
+              <div class="kk-stat-num" id="stat-draft">—</div>
+              <div class="kk-stat-label">Drafts</div>
+            </div>
+            <div class="kk-stat-card">
+              <div class="kk-stat-num" id="stat-cats">—</div>
+              <div class="kk-stat-label">Categories</div>
+            </div>
+          </div>
+
+          <div class="kk-section-title">Quick Actions</div>
+          <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
+            <button class="kk-btn kk-btn-primary" id="qa-add-nonveg">+ Non-Veg Dish</button>
+            <button class="kk-btn kk-btn-primary" id="qa-add-veg">+ Veg Dish</button>
+            <button class="kk-btn kk-btn-primary" id="qa-add-sig">+ Signature Dish</button>
+          </div>
+        </div><!-- /pane-overview -->
+
+        <!-- ── NON-VEG MENU ──────────────────────────── -->
+        <div id="pane-nonveg" class="kk-pane">
+          <h2 class="kk-pane-title">Non-Vegetarian Menu</h2>
+          <p class="kk-pane-sub">Manage categories and dishes for the Non-Veg tab.</p>
+          <div class="kk-toolbar">
+            <input class="kk-input kk-search" type="search"
+                   placeholder="Search dishes…" data-search="nonveg" />
+            <button class="kk-btn kk-btn-primary" data-add-dish="nonveg">+ Add Dish</button>
+            <button class="kk-btn kk-btn-ghost"   data-add-cat="nonveg">+ Add Category</button>
+          </div>
+          <div id="list-nonveg" class="kk-dish-list-wrap">
+            <div class="kk-loading-state"><span class="kk-spinner"></span> Loading…</div>
+          </div>
+        </div><!-- /pane-nonveg -->
+
+        <!-- ── VEG MENU ──────────────────────────────── -->
+        <div id="pane-veg" class="kk-pane">
+          <h2 class="kk-pane-title">Vegetarian Menu</h2>
+          <p class="kk-pane-sub">Manage categories and dishes for the Veg tab.</p>
+          <div class="kk-toolbar">
+            <input class="kk-input kk-search" type="search"
+                   placeholder="Search dishes…" data-search="veg" />
+            <button class="kk-btn kk-btn-primary" data-add-dish="veg">+ Add Dish</button>
+            <button class="kk-btn kk-btn-ghost"   data-add-cat="veg">+ Add Category</button>
+          </div>
+          <div id="list-veg" class="kk-dish-list-wrap">
+            <div class="kk-loading-state"><span class="kk-spinner"></span> Loading…</div>
+          </div>
+        </div><!-- /pane-veg -->
+
+        <!-- ── SIGNATURE RESERVE ─────────────────────── -->
+        <div id="pane-signature" class="kk-pane">
+          <h2 class="kk-pane-title">Signature Reserve</h2>
+          <p class="kk-pane-sub">Manage courses and premium dishes for the Signature tab.</p>
+          <div class="kk-toolbar">
+            <input class="kk-input kk-search" type="search"
+                   placeholder="Search dishes…" data-search="signature" />
+            <button class="kk-btn kk-btn-primary" data-add-dish="signature">+ Add Dish</button>
+            <button class="kk-btn kk-btn-ghost"   data-add-cat="signature">+ Add Course</button>
+          </div>
+          <div id="list-signature" class="kk-dish-list-wrap">
+            <div class="kk-loading-state"><span class="kk-spinner"></span> Loading…</div>
+          </div>
+        </div><!-- /pane-signature -->
+
+        <!-- ── SITE CONTENT ──────────────────────────── -->
+        <div id="pane-content" class="kk-pane">
+          <h2 class="kk-pane-title">Site Content</h2>
+          <p class="kk-pane-sub">Edit existing text on the public website.</p>
+
+          <div class="kk-content-field">
+            <div class="kk-content-field-label">About Us — Pioneer Intro</div>
+            <textarea class="kk-input" id="content-pioneer" rows="4"
+              placeholder="For years, Hyderabad has been celebrated…"></textarea>
+            <p class="kk-content-field-note">Appears in the "Pioneering Professionalism" block.</p>
+          </div>
+
+          <div class="kk-content-field">
+            <div class="kk-content-field-label">Founder's Vision</div>
+            <textarea class="kk-input" id="content-founder" rows="5"
+              placeholder="The KateringKing.com philosophy is driven by…"></textarea>
+            <p class="kk-content-field-note">Appears in the dark "Our Founder's Vision" block.</p>
+          </div>
+
+          <div class="kk-content-field">
+            <div class="kk-content-field-label">The Educated Choice</div>
+            <textarea class="kk-input" id="content-educated" rows="4"
+              placeholder="Under Mohammed's leadership…"></textarea>
+            <p class="kk-content-field-note">Appears in the "The Educated Choice" block.</p>
+          </div>
+
+          <div class="kk-content-field">
+            <div class="kk-content-field-label">Hospitality Section — Body Text</div>
+            <textarea class="kk-input" id="content-hospitality" rows="4"
+              placeholder="At KateringKing.com, we believe…"></textarea>
+            <p class="kk-content-field-note">Appears under "Elevating the Art of Hospitality".</p>
+          </div>
+
+          <div style="display:flex;gap:.7rem;margin-top:1rem;">
+            <button class="kk-btn kk-btn-primary" id="btn-save-content">Save Content</button>
+            <button class="kk-btn kk-btn-ghost"   id="btn-reload-content">Reload</button>
+          </div>
+        </div><!-- /pane-content -->
+
+        <!-- ── BACKUP & RESTORE ──────────────────────── -->
+        <div id="pane-backup" class="kk-pane">
+          <h2 class="kk-pane-title">Backup &amp; Restore</h2>
+          <p class="kk-pane-sub">Download, restore, or factory-reset all CMS-managed content.</p>
+
+          <div class="kk-backup-card">
+            <div class="kk-backup-card-title">Export Backup</div>
+            <div class="kk-backup-card-desc">
+              Download a JSON file containing all menu items, categories, and site content.
+              Does not include passwords or private keys.
+            </div>
+            <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
+              <button class="kk-btn kk-btn-primary" id="btn-export">
+                ↓ Download JSON
+              </button>
+              <button class="kk-btn kk-btn-ghost" id="btn-copy-backup">
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+
+          <div class="kk-backup-card">
+            <div class="kk-backup-card-title">Restore from Backup</div>
+            <div class="kk-backup-card-desc">
+              Select a previously exported JSON file to restore.
+              A preview is shown before any data is overwritten.
+            </div>
+            <input type="file" id="restore-file" accept=".json"
+                   style="display:none" />
+            <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;">
+              <button class="kk-btn kk-btn-ghost" id="btn-pick-restore">
+                Select JSON File…
+              </button>
+              <span id="restore-filename"
+                    style="font-size:.75rem;color:var(--text-muted)"></span>
+            </div>
+            <pre id="restore-preview" class="kk-restore-preview"></pre>
+            <div id="restore-validation"
+                 style="font-size:.75rem;margin-top:.5rem;display:none"></div>
+            <div style="display:flex;gap:.7rem;margin-top:.9rem;">
+              <button class="kk-btn kk-btn-primary" id="btn-do-restore"
+                      style="display:none">
+                Restore Now
+              </button>
+            </div>
+          </div>
+
+          <div class="kk-backup-card" style="border-color:rgba(224,82,82,.25);">
+            <div class="kk-backup-card-title" style="color:#f28b82;">
+              Factory Reset
+            </div>
+            <div class="kk-backup-card-desc">
+              Deletes all menu items, categories, and site content from Firestore.
+              Does NOT delete your admin account or uploaded images.
+              This cannot be undone without a backup.
+            </div>
+            <button class="kk-btn kk-btn-danger" id="btn-factory-reset">
+              Reset All Content…
+            </button>
+          </div>
+        </div><!-- /pane-backup -->
+
+        <!-- ── SETTINGS ──────────────────────────────── -->
+        <div id="pane-settings" class="kk-pane">
+          <h2 class="kk-pane-title">Settings</h2>
+          <p class="kk-pane-sub">Account information, system status, and CMS diagnostics.</p>
+
+          <div class="kk-section-title" style="margin-bottom:.7rem;">Account</div>
+          <div style="background:var(--navy-mid);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1rem;">
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">Signed in as</div>
+              <div class="kk-settings-val" id="settings-email">—</div>
+            </div>
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">Admin claim</div>
+              <div class="kk-settings-val" id="settings-admin-claim">Checking…</div>
+            </div>
+          </div>
+
+          <div class="kk-section-title" style="margin-bottom:.7rem;">Change Password</div>
+          <div style="background:var(--navy-mid);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1rem;">
+            <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:.9rem;">
+              A password-reset link will be sent to your email address.
+            </p>
+            <button class="kk-btn kk-btn-ghost" id="btn-send-reset-settings">
+              Send Password Reset Email
+            </button>
+            <div id="settings-reset-msg"
+                 style="font-size:.75rem;color:#81c995;margin-top:.5rem;display:none"></div>
+          </div>
+
+          <div class="kk-section-title" style="margin-bottom:.7rem;">System</div>
+          <div style="background:var(--navy-mid);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;">
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">CMS Schema Version</div>
+              <div class="kk-settings-val">v1</div>
+            </div>
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">Firebase Project</div>
+              <div class="kk-settings-val">kateringking</div>
+            </div>
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">Firestore Region</div>
+              <div class="kk-settings-val">asia-south1</div>
+            </div>
+            <div class="kk-settings-row">
+              <div class="kk-settings-key">Migration Status</div>
+              <div class="kk-settings-val" id="settings-migration">Checking…</div>
+            </div>
+          </div>
+        </div><!-- /pane-settings -->
+
+      </main><!-- /kk-main -->
+    </div><!-- /kk-body -->
+  </div><!-- /kk-dashboard -->
+
+</div><!-- /kk-admin-overlay -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     DISH ADD / EDIT MODAL
+════════════════════════════════════════════════════════════ -->
+<div id="kk-dish-modal" class="kk-modal-backdrop kk-admin">
+  <div class="kk-modal" role="dialog" aria-modal="true" aria-labelledby="kk-modal-title">
+    <div class="kk-modal-header">
+      <h3 class="kk-modal-title" id="kk-modal-title">Add Dish</h3>
+      <button class="kk-modal-close" id="kk-modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="kk-modal-body">
+      <input type="hidden" id="modal-item-id" />
+      <input type="hidden" id="modal-tab-id" />
+
+      <div class="kk-grid-2">
+        <div class="kk-form-group" style="grid-column:1/-1">
+          <label class="kk-label" for="modal-name">Dish Name *</label>
+          <input id="modal-name" class="kk-input" type="text"
+                 placeholder="e.g. Kareli Roast" required />
+        </div>
+        <div class="kk-form-group">
+          <label class="kk-label" for="modal-variant">Variant / Sub-title</label>
+          <input id="modal-variant" class="kk-input" type="text"
+                 placeholder="e.g. (Lamb Shanks)" />
+        </div>
+        <div class="kk-form-group">
+          <label class="kk-label" for="modal-price">Price (optional)</label>
+          <input id="modal-price" class="kk-input" type="text"
+                 placeholder="e.g. ₹850 per head" />
+        </div>
+        <div class="kk-form-group" style="grid-column:1/-1">
+          <label class="kk-label" for="modal-category">Category *</label>
+          <select id="modal-category" class="kk-input" style="background:var(--navy-soft);color:var(--cream);border:1px solid var(--border);"></select>
+        </div>
+        <div class="kk-form-group" style="grid-column:1/-1">
+          <label class="kk-label" for="modal-description">Description</label>
+          <textarea id="modal-description" class="kk-input" rows="3"
+                    placeholder="Describe the dish…"></textarea>
+        </div>
+      </div>
+
+      <!-- Image upload -->
+      <div class="kk-form-group">
+        <label class="kk-label">Dish Image</label>
+        <div class="kk-img-upload-area" id="modal-drop-zone"
+             style="position:relative;overflow:hidden;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+               stroke="rgba(201,168,76,0.5)" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <p>Drop an image here or <strong style="color:var(--gold)">click to browse</strong></p>
+          <p style="font-size:.68rem">JPEG, PNG or WebP · max 5 MB · auto-compressed to 1200px</p>
+          <input type="file" id="modal-img-file" accept="image/*"
+                 style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" />
+        </div>
+        <div class="kk-img-preview-wrap" style="margin-top:.6rem;width:100%;">
+          <img id="modal-img-preview" class="kk-img-preview" alt="Preview" />
+          <button id="modal-img-remove" class="kk-img-remove" type="button"
+                  aria-label="Remove image">✕</button>
+        </div>
+        <div class="kk-progress-wrap" id="modal-progress-wrap">
+          <div class="kk-progress-bar" id="modal-progress-bar"></div>
+        </div>
+        <input type="hidden" id="modal-img-url" />
+        <input type="hidden" id="modal-img-path" />
+        <p id="modal-img-status"
+           style="font-size:.72rem;color:var(--text-muted);margin-top:.3rem"></p>
+      </div>
+
+      <div class="kk-grid-2">
+        <div class="kk-form-group">
+          <label class="kk-label" for="modal-order">Display Order</label>
+          <input id="modal-order" class="kk-input" type="number"
+                 min="0" value="0" />
+        </div>
+        <div class="kk-form-group" style="display:flex;align-items:flex-end;gap:.6rem;padding-bottom:.05rem">
+          <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.82rem;color:var(--cream)">
+            <input type="checkbox" id="modal-featured"
+                   style="accent-color:var(--gold);width:15px;height:15px;" />
+            Featured dish
+          </label>
+        </div>
+      </div>
+
+      <div class="kk-form-group">
+        <label class="kk-label" for="modal-status">Status</label>
+        <select id="modal-status" class="kk-input" style="background:var(--navy-soft);color:var(--cream);">
+          <option value="published">Published — visible on public site</option>
+          <option value="draft">Draft — hidden from public site</option>
+        </select>
+      </div>
+
+      <div id="modal-error" class="kk-error"></div>
+    </div><!-- /modal-body -->
+
+    <div class="kk-modal-footer">
+      <button class="kk-btn kk-btn-ghost" id="kk-modal-cancel">Cancel</button>
+      <button class="kk-btn kk-btn-danger kk-btn-sm" id="kk-modal-delete"
+              style="display:none;">Delete Dish</button>
+      <button class="kk-btn kk-btn-primary" id="kk-modal-save">Save Dish</button>
+    </div>
+  </div>
+</div><!-- /dish modal -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOAST
+════════════════════════════════════════════════════════════ -->
+<div id="kk-toast" role="alert" aria-live="polite"></div>
+
+<script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>

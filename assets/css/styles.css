@@ -901,6 +901,67 @@ button {
   line-height: 1.8;
 }
 
+/* ── Veg / Non-Veg menu category grid ── */
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--navy-mid);
+}
+
+.mc-category {
+  background: var(--navy-mid);
+  padding: 1.8rem 2rem;
+  border-left: 2px solid rgba(201,168,76,0.18);
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+.mc-category:hover {
+  background: rgba(30,45,65,0.95);
+  border-left-color: var(--gold);
+}
+
+.mc-cat-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  letter-spacing: 0.02em;
+}
+
+.mc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mc-list li {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: rgba(240,235,224,0.78);
+  line-height: 1.5;
+  padding-left: 0.8rem;
+  position: relative;
+}
+.mc-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .mc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .mc-grid { grid-template-columns: 1fr; }
+  .mc-category { padding: 1.4rem 1.5rem; }
+}
+
 .heritage-subtitle {
   display: block;
   font-family: var(--font-sans);
