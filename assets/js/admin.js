@@ -243,11 +243,21 @@ async function loadOverviewStats() {
     $(id).textContent = '…';
   });
 
+  // Timeout wrapper — if Firestore hangs for 10s, show error
+  const withTimeout = (promise, ms = 10000) =>
+    Promise.race([
+      promise,
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Request timed out — check Firestore rules and admin token.')), ms)
+      )
+    ]);
+
   try {
-    const [itemsSnap, catsSnap] = await Promise.all([
+    const [itemsSnap, catsSnap] = await withTimeout(Promise.all([
       getDocs(collection(db, COL.ITEMS)),
       getDocs(collection(db, COL.CATEGORIES)),
-    ]);
+    ]));
+
     const items     = itemsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
     const published = items.filter(i => i.status === 'published').length;
     const draft     = items.filter(i => i.status === 'draft').length;
@@ -295,8 +305,10 @@ async function loadOverviewStats() {
     const recentEl = $('kk-recent-dishes');
     if (recentEl) {
       recentEl.innerHTML = `<div class="kk-empty-state" style="color:#f28b82;padding:1rem 0">
-        Could not load data: ${_esc(err.message)}<br/>
-        <small>Try signing out and back in to refresh your admin token.</small>
+        <strong>Could not load data.</strong><br/>
+        ${_esc(err.message)}<br/><br/>
+        <small>Sign out and sign back in to refresh your admin token,
+        then check Firestore rules allow admin reads.</small>
       </div>`;
     }
   }
