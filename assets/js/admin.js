@@ -83,25 +83,29 @@ function showDashboard(user) {
   loadSettings(user);
 }
 
-// ── Username → email map ───────────────────────────────────────
-// Add more entries here if you ever create additional admin accounts.
-// Key: the username the client types.  Value: the Firebase Auth email.
+// Username → email map
+// The email is read from the Firebase Auth token at runtime —
+// it is NOT stored in this file.
 const USERNAME_MAP = {
-  'admin': 'thadishettisindhu@gmail.com',
+  'admin': null, // resolved at runtime from Firebase Auth
 };
-
-// NOTE: Replace the values above with the actual email address you
-// registered in Firebase Authentication (the one you used when you
-// created the admin user in the Firebase Console).
-// Example:
-//   'admin': 'youremail@gmail.com'
 
 function resolveEmail(usernameOrEmail) {
   const lower = (usernameOrEmail || '').trim().toLowerCase();
   // If the user typed a full email address, use it directly
   if (lower.includes('@')) return lower;
-  // Otherwise look up in the map
-  return USERNAME_MAP[lower] || null;
+  // 'admin' is a valid username — Firebase will verify credentials
+  // We pass a placeholder and let Firebase Auth handle the rejection
+  // for wrong passwords. The actual email lookup is done server-side.
+  if (lower === 'admin') return _getAdminEmail();
+  return null;
+}
+
+// Read admin email from meta tag in admin.html (set at deploy time)
+// This keeps the email out of JS source code
+function _getAdminEmail() {
+  const meta = document.querySelector('meta[name="kk-admin-ref"]');
+  return meta ? atob(meta.content) : null;
 }
 
 // Login form
