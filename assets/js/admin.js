@@ -76,9 +76,10 @@ function showDashboard(user) {
   hide(loginCard);
   showFlex(dashboard);
   dashboard.classList.add('open');
-  $('kk-user-email').textContent   = 'Administrator';
-  $('settings-email').textContent  = 'Administrator';
-  $('settings-uid').textContent    = user.uid   || '';
+  $('kk-user-email').textContent  = 'Administrator';
+  $('settings-email').textContent = 'Administrator';
+  const uidEl = $('settings-uid');
+  if (uidEl) uidEl.textContent = user.uid || '';
   loadOverviewStats();
   loadSettings(user);
 }
@@ -989,7 +990,8 @@ $('btn-factory-reset').addEventListener('click', async () => {
 async function loadSettings(user) {
   if (!user) return;
   $('settings-email').textContent = 'Administrator';
-  $('settings-uid').textContent   = user.uid   || '';
+  const uidEl2 = $('settings-uid');
+  if (uidEl2) uidEl2.textContent = user.uid || '';
 
   // Check admin claim
   try {
