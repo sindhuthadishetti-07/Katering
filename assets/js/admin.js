@@ -238,21 +238,67 @@ $$('.kk-nav-item').forEach(btn => {
 // OVERVIEW STATS
 // ══════════════════════════════════════════════════════════════
 async function loadOverviewStats() {
+  // Show loading state
+  ['stat-total-items','stat-published','stat-draft','stat-cats'].forEach(id => {
+    $(id).textContent = '…';
+  });
+
   try {
     const [itemsSnap, catsSnap] = await Promise.all([
       getDocs(collection(db, COL.ITEMS)),
       getDocs(collection(db, COL.CATEGORIES)),
     ]);
-    const items      = itemsSnap.docs.map(d => d.data());
-    const published  = items.filter(i => i.status === 'published').length;
-    const draft      = items.filter(i => i.status === 'draft').length;
+    const items     = itemsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+    const published = items.filter(i => i.status === 'published').length;
+    const draft     = items.filter(i => i.status === 'draft').length;
 
     $('stat-total-items').textContent = items.length;
     $('stat-published').textContent   = published;
     $('stat-draft').textContent       = draft;
     $('stat-cats').textContent        = catsSnap.size;
-  } catch {
-    // Non-critical — overview still renders
+
+    // Render recent dishes (last 8 updated)
+    const recent = [...items]
+      .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))
+      .slice(0, 8);
+
+    const recentEl = $('kk-recent-dishes');
+    if (recentEl) {
+      if (!recent.length) {
+        recentEl.innerHTML = `<div class="kk-empty-state" style="padding:1.5rem 0">
+          No dishes yet. Use the menu tabs above to add dishes.</div>`;
+      } else {
+        recentEl.innerHTML = recent.map(item => `
+          <div class="kk-dish-row">
+            ${item.imageUrl
+              ? `<img src="${_esc(item.imageUrl)}" class="kk-dish-thumb"
+                      alt="${_esc(item.name)}"
+                      onerror="this.style.display='none'" />`
+              : `<div class="kk-dish-thumb-placeholder">🍽</div>`}
+            <div class="kk-dish-info">
+              <div class="kk-dish-name-text">${_esc(item.name)}
+                <span class="kk-badge ${item.status === 'published'
+                  ? 'kk-badge-published' : 'kk-badge-draft'}">
+                  ${item.status === 'published' ? 'live' : 'draft'}</span>
+              </div>
+              <div class="kk-dish-meta">${_esc(item.menuTab)} · ${_esc(item.categoryName || '')}</div>
+            </div>
+          </div>`).join('');
+      }
+    }
+
+  } catch (err) {
+    console.error('[Overview] loadOverviewStats failed:', err);
+    ['stat-total-items','stat-published','stat-draft','stat-cats'].forEach(id => {
+      $(id).textContent = '!';
+    });
+    const recentEl = $('kk-recent-dishes');
+    if (recentEl) {
+      recentEl.innerHTML = `<div class="kk-empty-state" style="color:#f28b82;padding:1rem 0">
+        Could not load data: ${_esc(err.message)}<br/>
+        <small>Try signing out and back in to refresh your admin token.</small>
+      </div>`;
+    }
   }
 }
 
