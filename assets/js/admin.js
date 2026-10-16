@@ -244,7 +244,7 @@ async function loadOverviewStats() {
   });
 
   // Timeout wrapper — if Firestore hangs for 10s, show error
-  const withTimeout = (promise, ms = 10000) =>
+  const withTimeout = (promise, ms = 5000) =>
     Promise.race([
       promise,
       new Promise((_, reject) =>
