@@ -805,6 +805,24 @@ select.kk-input option:checked {
    RESPONSIVE — mobile
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 700px) {
+
+  /* ── Overlay fills screen ── */
+  #kk-admin-overlay {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  /* ── Login card full-width ── */
+  .kk-login-card {
+    width: 100vw;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1.4rem;
+    overflow-y: auto;
+  }
+
+  /* ── Dashboard full screen ── */
   #kk-dashboard {
     width: 100vw;
     height: 100dvh;
@@ -812,9 +830,21 @@ select.kk-input option:checked {
     border: none;
   }
 
+  /* ── Hide sidebar — replaced by mobile tab strip ── */
   .kk-sidebar { display: none; }
 
-  /* Mobile: horizontal tab strip at the top */
+  /* ── Topbar — compact on mobile ── */
+  .kk-topbar {
+    padding: 0.6rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .kk-topbar-brand { font-size: 0.95rem; }
+  .kk-topbar-actions { gap: 0.4rem; }
+  .kk-topbar-actions .kk-btn { font-size: 0.65rem; padding: 0.45rem 0.8rem; }
+  .kk-admin-email { display: none; }
+
+  /* ── Mobile horizontal tab strip ── */
   .kk-mobile-tabs {
     display: flex;
     overflow-x: auto;
@@ -828,10 +858,10 @@ select.kk-input option:checked {
 
   .kk-mobile-tab {
     flex-shrink: 0;
-    padding: 0.7rem 1rem;
-    font-size: 0.7rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--silver);
     border: none;
@@ -839,14 +869,95 @@ select.kk-input option:checked {
     cursor: pointer;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
   }
   .kk-mobile-tab.active {
     color: var(--gold-light);
     border-bottom-color: var(--gold);
   }
 
+  /* ── Main content area ── */
+  .kk-main { padding: 1rem; }
+
+  /* ── Pane headings ── */
+  .kk-pane-title { font-size: 1.25rem; }
+  .kk-pane-sub   { font-size: 0.72rem; margin-bottom: 1rem; }
+
+  /* ── Toolbar — stack vertically ── */
+  .kk-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .kk-toolbar .kk-search { max-width: 100%; }
+  .kk-toolbar .kk-btn    { width: 100%; justify-content: center; }
+
+  /* ── Stat grid — 2 columns ── */
+  .kk-stat-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .kk-stat-num  { font-size: 1.6rem; }
+
+  /* ── Dish rows — tighter ── */
+  .kk-dish-row { padding: 0.55rem 0.7rem; gap: 0.6rem; }
+  .kk-dish-thumb            { width: 38px; height: 38px; }
+  .kk-dish-thumb-placeholder { width: 38px; height: 38px; }
+  .kk-dish-name-text { font-size: 0.82rem; }
+  .kk-dish-meta      { font-size: 0.62rem; }
+  .kk-dish-actions   { flex-direction: column; gap: 0.25rem; }
+  .kk-dish-actions .kk-btn { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
+
+  /* ── Category block ── */
+  .kk-cat-header { padding: 0.7rem 0.8rem; }
+  .kk-cat-name   { font-size: 0.95rem; }
+
+  /* ── Section title ── */
+  .kk-section-title { font-size: 0.65rem; }
+
+  /* ── Quick action buttons ── */
+  #pane-overview > div:last-child {
+    flex-direction: column;
+  }
+  #pane-overview > div:last-child .kk-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Modal — full screen ── */
+  .kk-modal-backdrop {
+    align-items: flex-end;
+  }
+  .kk-modal {
+    width: 100vw;
+    max-height: 92dvh;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+  }
+  .kk-modal-header { padding: 1rem 1.1rem; }
+  .kk-modal-body   { padding: 1rem 1.1rem; }
+  .kk-modal-footer { padding: 0.8rem 1.1rem; flex-wrap: wrap; }
+  .kk-modal-footer .kk-btn { flex: 1; justify-content: center; min-width: 80px; }
+
+  /* ── Form grid — single column ── */
   .kk-grid-2 { grid-template-columns: 1fr; }
-  .kk-modal { width: 100vw; max-height: 100dvh; border-radius: 0; }
+
+  /* ── Backup cards ── */
+  .kk-backup-card { padding: 1rem; }
+  .kk-backup-card > div:last-child { flex-direction: column; }
+  .kk-backup-card > div:last-child .kk-btn { width: 100%; justify-content: center; }
+
+  /* ── Content fields ── */
+  .kk-content-field { padding: 1rem; }
+
+  /* ── Settings rows ── */
+  .kk-settings-row { flex-direction: column; gap: 0.3rem; }
+  .kk-settings-val { text-align: left; }
+
+  /* ── Toast ── */
+  #kk-toast {
+    width: 90vw;
+    text-align: center;
+    white-space: normal;
+    bottom: 1rem;
+  }
 }
 
 @media (min-width: 701px) {
