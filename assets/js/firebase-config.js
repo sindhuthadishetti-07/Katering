@@ -1,6 +1,12 @@
 /**
  * KateringKing — Firebase Configuration
- * Loaded as an ES module by cms.js, menu-renderer.js and admin.js
+ *
+ * NOTE: It is safe and intentional for this config to be in source
+ * control. Firebase frontend API keys identify the project but do
+ * NOT grant any data access. All data access is controlled by
+ * Firestore Security Rules and Firebase Authentication.
+ *
+ * See: https://firebase.google.com/docs/projects/api-keys
  */
 
 export const firebaseConfig = {
