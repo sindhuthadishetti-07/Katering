@@ -84,28 +84,30 @@ function showDashboard(user) {
   loadSettings(user);
 }
 
-// Username → email map
-// The email is read from the Firebase Auth token at runtime —
-// it is NOT stored in this file.
+// Username → meta tag map
+// Each username maps to a <meta> tag in admin.html whose content is
+// the base64-encoded email for that account. The email is read at
+// runtime from the meta tag — it is NOT stored in this file.
 const USERNAME_MAP = {
-  'admin': null, // resolved at runtime from Firebase Auth
+  'owner':     'kk-admin-ref',           // thadishettisindhu@gmail.com
+  'admin':     'kk-admin-ref-admin',     // kateringkingservices@gmail.com
+  'harshitha': 'kk-admin-ref-harshitha', // mandadiharshithareddy@gmail.com
 };
 
 function resolveEmail(usernameOrEmail) {
   const lower = (usernameOrEmail || '').trim().toLowerCase();
   // If the user typed a full email address, use it directly
   if (lower.includes('@')) return lower;
-  // 'admin' is a valid username — Firebase will verify credentials
-  // We pass a placeholder and let Firebase Auth handle the rejection
-  // for wrong passwords. The actual email lookup is done server-side.
-  if (lower === 'admin') return _getAdminEmail();
+  // Look up known username → meta tag name
+  const metaName = USERNAME_MAP[lower];
+  if (metaName) return _getEmailFromMeta(metaName);
   return null;
 }
 
-// Read admin email from meta tag in admin.html (set at deploy time)
+// Read an admin email from a meta tag in admin.html (set at deploy time)
 // This keeps the email out of JS source code
-function _getAdminEmail() {
-  const meta = document.querySelector('meta[name="kk-admin-ref"]');
+function _getEmailFromMeta(metaName) {
+  const meta = document.querySelector(`meta[name="${metaName}"]`);
   return meta ? atob(meta.content) : null;
 }
 

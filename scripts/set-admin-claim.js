@@ -17,8 +17,17 @@ const admin = require('firebase-admin');
 const path  = require('path');
 const fs    = require('fs');
 
-// ─── Admin UID — set during CMS setup ────────────────────────
-const ADMIN_UID = 'adH7x4YVAuUkOCu8yiwnsYwjlJ22';
+// ─── Admin UIDs — all accounts below have admin access ─────────
+// owner:    thadishettisindhu@gmail.com
+const OWNER_UID    = 'adH7x4YVAuUkOCu8yiwnsYwjlJ22';
+
+// admin:    kateringkingservices@gmail.com
+const ADMIN_UID    = 'ejP4zmeiSzYyRg6oX9Ftix4xVme2';
+
+// harshitha: mandadiharshithareddy@gmail.com
+const HARSHITHA_UID = 'Jf8BTqkFJPbJtdXYYCWbOAcxShI2';
+
+const UIDS_TO_GRANT = [OWNER_UID, ADMIN_UID, HARSHITHA_UID];
 
 // ─── Initialise ──────────────────────────────────────────────
 const keyPath = path.join(__dirname, 'serviceAccountKey.json');
@@ -36,32 +45,26 @@ admin.initializeApp({
 });
 
 async function setAdminClaim() {
-  console.log('\n🔑  KateringKing — Set Admin Custom Claim');
+  console.log('\n🔑  KateringKing — Set Admin Custom Claims');
   console.log('─'.repeat(50));
-  console.log(`   UID: ${ADMIN_UID}`);
 
-  try {
-    // Set the custom claim
-    await admin.auth().setCustomUserClaims(ADMIN_UID, { admin: true });
-
-    // Verify it was applied
-    const user = await admin.auth().getUser(ADMIN_UID);
-    const claims = user.customClaims || {};
-
-    if (claims.admin === true) {
-      console.log('\n✅  Success! Custom claim { admin: true } applied.');
-      console.log(`   Email  : ${user.email}`);
-      console.log(`   UID    : ${user.uid}`);
-      console.log('\n   The user must sign out and sign back in (or wait up to');
-      console.log('   1 hour) for the new token to take effect.\n');
-    } else {
-      console.error('\n❌  Claim was not applied correctly. Please try again.');
+  for (const uid of UIDS_TO_GRANT) {
+    console.log(`\n   Processing UID: ${uid}`);
+    try {
+      await admin.auth().setCustomUserClaims(uid, { admin: true });
+      const user   = await admin.auth().getUser(uid);
+      const claims = user.customClaims || {};
+      if (claims.admin === true) {
+        console.log(`✅  Success! { admin: true } applied to ${user.email}`);
+      } else {
+        console.error(`❌  Claim not applied for ${uid}`);
+      }
+    } catch (err) {
+      console.error(`❌  Failed for ${uid}:`, err.message);
     }
-  } catch (err) {
-    console.error('\n❌  Failed to set custom claim:', err.message);
-    process.exit(1);
   }
 
+  console.log('\n   Users must sign out and back in for the new token to take effect.\n');
   process.exit(0);
 }
 
